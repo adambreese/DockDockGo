@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private float moveSpeed = 15f;
     private SpawnManager spawnManager;
     private GameManager gameManager;
+    public GameObject explosion;
     private void Awake()
     {
         spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
@@ -45,9 +46,17 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Station"))
         {
-            Destroy(other.gameObject);
+            Instantiate(explosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
-            gameManager.GameOver(); 
+            gameManager.GameOver();
+        }
+        if (other.CompareTag("WinFab"))
+        {
+            gameManager.NextLevel();
+            spawnManager.DeleteAllObjects();
+            spawnManager.SpawnNewPlayerShip();
+            spawnManager.SpawnNewStation();
+            spawnManager.SpawnWinFab();
         }
 
     }

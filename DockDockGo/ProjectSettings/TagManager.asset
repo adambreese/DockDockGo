@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Loss Screen
   - Station
+  - WinFab
   layers:
   - Default
   - TransparentFX

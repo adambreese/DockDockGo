@@ -353,6 +353,7 @@
 "Assets/Scripts/Approach.cs"
 "Assets/Scripts/DetectCollision.cs"
 "Assets/Scripts/GameManager.cs"
+"Assets/Scripts/LevelManager.cs"
 "Assets/Scripts/Obstacle.cs"
 "Assets/Scripts/PlayerController.cs"
 "Assets/Scripts/SpawnManager.cs"
