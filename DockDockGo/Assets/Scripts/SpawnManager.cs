@@ -6,7 +6,9 @@ public class SpawnManager : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject playerShip;
+    public GameObject procShip;
     public GameObject station;
+    public GameObject procStation;
     public GameObject winFab;
     private Vector3 shipSpawnPosition = new Vector3(0, 0, 0);
     private Vector3 stationSpawnPosition = new Vector3(0, 0, 50);
@@ -25,11 +27,14 @@ public class SpawnManager : MonoBehaviour
     {
         //Adam: this is where you'll probably add a reference to your procedural script.
 
-        Instantiate(playerShip, shipSpawnPosition, playerShip.transform.rotation);
+        //Instantiate(playerShip, shipSpawnPosition, playerShip.transform.rotation);
+
+        Instantiate(procShip, shipSpawnPosition, procShip.transform.rotation);
     }
     public void SpawnNewStation()
     {
         Instantiate(station, stationSpawnPosition, station.transform.rotation);
+        Instantiate(procStation, stationSpawnPosition, station.transform.rotation);
     }
     public void SpawnWinFab()
     {

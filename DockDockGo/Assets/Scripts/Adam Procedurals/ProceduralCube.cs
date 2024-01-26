@@ -6,6 +6,7 @@ using UnityEngine;
 public class ProceduralCube : MonoBehaviour
 {
     Mesh mesh;
+    MeshCollider meshCollider;
     List<Vector3> vertices;
     List<int> triangles;
 
@@ -17,6 +18,7 @@ public class ProceduralCube : MonoBehaviour
     void Awake()
     {
         mesh = GetComponent<MeshFilter>().mesh;
+        meshCollider = GetComponent<MeshCollider>();
         adjScale = scale * 0.5f;
     }
 
@@ -24,6 +26,7 @@ public class ProceduralCube : MonoBehaviour
     {
         MakeCube(adjScale, new Vector3(posX*scale, posY*scale, posZ*scale));
         UpdateMesh();
+        UpdateMeshCollider();
     }
 
     void MakeCube(float cubeScale, Vector3 cubePos)
@@ -57,5 +60,11 @@ public class ProceduralCube : MonoBehaviour
         mesh.vertices = vertices.ToArray();
         mesh.triangles = triangles.ToArray();
         mesh.RecalculateNormals();
+    }
+
+    void UpdateMeshCollider()
+    {
+        // Assign the same vertices and triangles to the MeshCollider
+        meshCollider.sharedMesh = mesh;
     }
 }
